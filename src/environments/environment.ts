@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  newsUrl: "https://newsapi.org/v2/everything?q=bitcoin&apiKey=fde3d2128ece4766aa368aeeb4b66b76",
+  jhuGitUrl: "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/",
+  jhuGitCases: "time_series_covid19_confirmed_global.csv",
+  jhuGitDeaths: "time_series_covid19_deaths_global.csv",
+  jhuGitRecovered: "time_series_covid19_recovered_global.csv"
 };
 
 /*

@@ -1,0 +1,43 @@
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.graph-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+@media only screen and (max-width: 1000px) {
+    .graph {
+        justify-content: center;
+    }
+    .graph-wrapper {
+        flex-direction: column;
+    }
+}
+
+.graph {
+    display: flex;
+    background-color: white;
+    margin: 1%;
+    padding: 1%;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.searchbar {
+    background-color: white; 
+    border-radius: 10px; 
+    padding: 1%;
+    margin: 1%;
+}
+
+.news {
+    margin: 1%;
+    border-radius: 10px;
+    padding: 1%;
+    background-color: white;
+    display: flex;
+    flex-grow: 1;
+}

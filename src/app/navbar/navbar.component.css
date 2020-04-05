@@ -1,0 +1,23 @@
+.menu-wrapper {
+    display: flex;
+    padding: 1%;
+}
+
+@media only screen and (max-width: 600px) {
+    .menu-wrapper {
+        padding: 5%;
+    }
+}
+
+.inner-wrapper {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+}
+
+.logo {
+    margin: 1%;
+    font-size: 1.5rem;
+    color: red;
+    margin-right: 20px;
+}

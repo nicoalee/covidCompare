@@ -1,0 +1,31 @@
+<div>
+    <h4>Select Countries Below:</h4>
+    <mat-form-field style="width: 100%;">
+        <mat-chip-list #chipList>
+            <mat-chip
+                *ngFor="let selectedCountry of selectedCountries;"
+                [selectable]="false"
+                [removable]="true"
+                (removed)="onRemovedChip(selectedCountry)">
+                {{selectedCountry}}
+                <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+            <input
+                placeholder="find a country..."
+                #countryInput
+                [formControl]="countryControl"
+                [matAutocomplete]="auto"
+                [matChipInputFor]="chipList"
+                (matChipInputTokenEnd)="onAddChip($event)">
+        </mat-chip-list>
+        <mat-autocomplete 
+            #auto="matAutocomplete"
+            (optionSelected)="selected($event)">
+
+            <mat-option *ngFor="let country of filteredCountries | async" [value]="country">
+                {{country}}
+            </mat-option>
+
+        </mat-autocomplete>
+    </mat-form-field>
+</div>
