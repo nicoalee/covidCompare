@@ -33,7 +33,7 @@ export class NewsComponent implements OnInit {
         let countriesIndex = this.countries.indexOf(country);
         this.countries.splice(countriesIndex, 1);
         let newsIndex = this.news.findIndex((item: NewsItem) => {
-          item.country === country;
+          return item.country === country;
         })
         this.news.splice(newsIndex, 1);
       },
@@ -66,5 +66,6 @@ export class NewsComponent implements OnInit {
   onChange(event) {
     let value = event.value;
     this.selectedCountry = this.news.find(item => item.country === value)
+    
   }
 }

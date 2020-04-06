@@ -3,6 +3,8 @@ import { CoronaDataService } from 'src/app/services/coronaData.service';
 import { SearchService } from 'src/app/services/search.service';
 import { Series } from '../dtos';
 import { LoaderService } from 'src/app/services/loader.service';
+import { GraphTypeService } from 'src/app/services/graphType.service';
+import { Observable, forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-graph',
@@ -21,7 +23,7 @@ export class GraphComponent implements OnInit {
 
   // metadata
   view: any[] = [1200,500]
-  multi: any[] = [];
+  multi: Series[] = [];
 
   // options
   legend: boolean = true;
@@ -35,7 +37,12 @@ export class GraphComponent implements OnInit {
   yAxisLabel: string = 'Cases';
   timeline: boolean = true;
 
-  constructor(private _searchService: SearchService, private _coronaDataService: CoronaDataService, private _loaderService: LoaderService) { }
+  constructor(
+    private _searchService: SearchService, 
+    private _coronaDataService: CoronaDataService, 
+    private _loaderService: LoaderService,
+    private _graphTypeService: GraphTypeService
+  ) { }
 
   ngOnInit(): void {
     this.innerWidth = window.innerWidth
@@ -47,8 +54,40 @@ export class GraphComponent implements OnInit {
   selected: string = "cases";
 
   onChange(event) {
-    console.log(event.value);
+    let arr: string[] = this.multi.map(item => item.name);
+    this._graphTypeService.emit(event.value);
+    this.updateGraph(arr, event.value)
+  }
 
+  updateGraph(arr: string[], str: string) {
+    let tempArr: Observable<Series>[] = []
+    switch (str) {
+      case "cases":
+        for(let i = 0; i < arr.length; i++) {
+          tempArr.push(this._coronaDataService.getCasesByCountry(arr[i]))
+        }
+        break;
+      case "deaths":
+        for(let i = 0; i < arr.length; i++) {
+          tempArr.push(this._coronaDataService.getDeathsByCountry(arr[i]))
+        }
+        break;
+      case "recovered":
+        for(let i = 0; i < arr.length; i++) {
+          tempArr.push(this._coronaDataService.getRecoveredByCountry(arr[i]))
+        }
+        break;
+      default:
+        throw new Error("Button option does not exist");
+    }
+    forkJoin(tempArr)
+      .subscribe(
+        (data) => {
+          this.multi = [...data]
+        },
+        (err) => {
+          throw new Error(err)
+        })
   }
 
   subscribeToSearch() {
@@ -100,9 +139,5 @@ export class GraphComponent implements OnInit {
       this.legend = false;
       this.view = [370, 300]
     }
-  }
-
-  onSelect(event) {
-
   }
 }

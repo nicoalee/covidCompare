@@ -121,8 +121,21 @@ export class CoronaDataService {
         return aggregatedArr
     }
 
+    getDeathsByCountry(country: string): Observable<Series> {
+        if(country === "Taiwan") country = "Taiwan*"
+        return this._http.get(`${this._jhuGitUrl}${this._jhuGitDeaths}`, {responseType: "text"}).pipe(
+            map(arr => this._papa.parse(arr)),
+            map((arr: ParseResult) => this.formatData(arr, country))
+        )
+    }
 
-
+    getRecoveredByCountry(country: string) {
+        if(country === "Taiwan") country = "Taiwan*"
+        return this._http.get(`${this._jhuGitUrl}${this._jhuGitRecovered}`, {responseType: "text"}).pipe(
+            map(arr => this._papa.parse(arr)),
+            map((arr: ParseResult) => this.formatData(arr, country))
+        )
+    }
 
 
 }

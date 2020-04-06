@@ -11,7 +11,9 @@
                 Recovered
             </mat-button-toggle>
           </mat-button-toggle-group>
-        <h4 style="text-align: center; margin: 20px 0; font-weight: bold;">Cases (including deaths and recovered)</h4>
+        <h4 *ngIf="selected === 'cases'" style="text-align: center; margin: 20px 0; font-weight: bold;">Cases (including deaths and recovered)</h4>
+        <h4 *ngIf="selected === 'deaths'" style="text-align: center; margin: 20px 0; font-weight: bold;">Deaths</h4>
+        <h4 *ngIf="selected === 'recovered'" style="text-align: center; margin: 20px 0; font-weight: bold;">Recovered</h4>
     </div>
     <ngx-charts-area-chart
         *ngIf="multi"
@@ -24,7 +26,6 @@
         [xAxisLabel]="xAxisLabel"
         [yAxisLabel]="yAxisLabel"
         [timeline]="timeline"
-        [results]="multi"
-        (select)="onSelect($event)">
+        [results]="multi">
     </ngx-charts-area-chart>
 </div>

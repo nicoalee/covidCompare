@@ -1,16 +1,15 @@
+<div style="margin-bottom: 10px;">
+    <mat-button-toggle-group appearance="legacy" (change)="onChange($event)" [(ngModel)]="selected">
+        <mat-button-toggle *ngFor="let country of countries" [value]="country">
+            {{country}}
+        </mat-button-toggle>
+        
+      </mat-button-toggle-group>
+</div>
 <div style="height: 75vh; overflow: scroll;">
 
-    <div style="margin-bottom: 10px;">
-        <mat-button-toggle-group appearance="legacy" (change)="onChange($event)" [(ngModel)]="selected">
-            <mat-button-toggle *ngFor="let country of countries" [value]="country">
-                {{country}}
-            </mat-button-toggle>
-            
-          </mat-button-toggle-group>
-    </div>
-
     <div *ngIf="selectedCountry; else empty">
-        <h1 style="font-weight: bold;">{{selectedCountry?.country}} news</h1>
+        <h1 style="font-weight: bold;">{{selectedCountry?.country}} coronavirus news</h1>
         <div *ngFor="let article of selectedCountry?.articles">
             <div style="display: flex; align-items: center;">
                 <div style="display: inline;">
