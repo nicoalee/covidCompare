@@ -24,7 +24,7 @@ export class GraphComponent implements OnInit {
   multi: any[] = [];
 
   // options
-  legend: boolean = false;
+  legend: boolean = true;
   showLabels: boolean = true;
   animations: boolean = true;
   xAxis: boolean = true;
@@ -36,12 +36,19 @@ export class GraphComponent implements OnInit {
   timeline: boolean = true;
 
   constructor(private _searchService: SearchService, private _coronaDataService: CoronaDataService, private _loaderService: LoaderService) { }
-  
+
   ngOnInit(): void {
     this.innerWidth = window.innerWidth
     this.resizeGraph()
     this.subscribeToSearch()
     this.subscribeToRemove()
+  }
+
+  selected: string = "cases";
+
+  onChange(event) {
+    console.log(event.value);
+
   }
 
   subscribeToSearch() {
@@ -74,24 +81,24 @@ export class GraphComponent implements OnInit {
   }
 
   resizeGraph() {
-    if(this.innerWidth > 1800) {
-      this.view = [1350, 500]
-    } else if(this.innerWidth > 1500) {
-      this.view = [1125, 400]
-    } else if(this.innerWidth > 1300) {
-      this.view = [975, 400]
-    } else if(this.innerWidth > 1100) {
-      this.view = [800, 350]
-    } else if(this.innerWidth > 1000) {
-      this.view = [690, 300]
-    } else if(this.innerWidth > 800) {
-      this.view = [750, 300]
+    if(this.innerWidth > 1500) {
+      this.legend = true;
+      this.view = [1200, 500]
+    } else if(this.innerWidth > 1200) {
+      this.legend = true;
+      this.view = [950, 500]
+    } else if(this.innerWidth > 992) {
+      this.legend = true;
+      this.view = [950, 450]
+    } else if(this.innerWidth > 768) {
+      this.legend = true;
+      this.view = [770, 400]
     } else if(this.innerWidth > 600) {
-      this.view = [550, 300]
-    } else if(this.innerWidth > 500) {
-      this.view = [450, 300]
-    } else if(this.innerWidth > 300) {
-      this.view = [400, 250]
+      this.legend = true;
+      this.view = [600, 350]
+    } else if(this.innerWidth <= 600) {
+      this.legend = false;
+      this.view = [370, 300]
     }
   }
 

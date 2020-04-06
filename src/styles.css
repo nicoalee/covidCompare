@@ -3,8 +3,42 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-@media only screen and (max-width: 1000px) {
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
     svg.ngx-charts {
-        height: 200px;
+        height: 250px !important;
     }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    svg.ngx-charts {
+        height: 280px !important;
+    }
+}
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    svg.ngx-charts {
+        height: 350px !important;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    svg.ngx-charts {
+        height: 400px !important;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    svg.ngx-charts {
+        height: 450px !important;
+    }
+}
+
+mat-button-toggle-group {
+    flex-wrap: wrap;
 }

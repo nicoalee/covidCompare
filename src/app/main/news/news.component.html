@@ -1,3 +1,51 @@
-<div>
-    <p>news works!</p>
+<div style="height: 75vh; overflow: scroll;">
+
+    <div style="margin-bottom: 10px;">
+        <mat-button-toggle-group appearance="legacy" (change)="onChange($event)" [(ngModel)]="selected">
+            <mat-button-toggle *ngFor="let country of countries" [value]="country">
+                {{country}}
+            </mat-button-toggle>
+            
+          </mat-button-toggle-group>
+    </div>
+
+    <div *ngIf="selectedCountry; else empty">
+        <h1 style="font-weight: bold;">{{selectedCountry?.country}} news</h1>
+        <div *ngFor="let article of selectedCountry?.articles">
+            <div style="display: flex; align-items: center;">
+                <div style="display: inline;">
+                    <a href="{{article.url}}" target="_blank">
+                        <img matTooltip="Go to article" *ngIf="article.urlToImage; else showButton" style="width: 100px; border-radius: 10px;" [src]="article.urlToImage" alt="Article Image">
+                    </a>
+                    <ng-template #showButton>
+                        <a href="{{article.url}}" target="_blank">
+                            <button mat-raised-button color="primary">Go to article</button>
+                        </a>
+                    </ng-template>
+                </div>
+                <p style="display: inline; margin-left: 10px; font-weight: bold; font-size: 1rem;">{{article.source.name}}</p>
+            </div>
+            <p>{{article.title}}</p>
+            <p style="color: gray">{{article.description | truncate}}</p>
+            <mat-divider style="margin-bottom: 5%;"></mat-divider>
+        </div>
+    </div>
+    <ng-template #empty>
+        <p style="color: lightgray;">
+            Select countries above to see the latest news regarding the coronavirus.
+        </p>
+    </ng-template>
 </div>
+
+<!-- source: {
+    id: string, 
+    name: string
+};
+author: string;
+title: string;
+description: string;
+url: string;
+urlToImage: string;
+publishedAt: string;
+content: string;
+} -->

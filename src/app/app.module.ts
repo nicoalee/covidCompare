@@ -13,6 +13,9 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -25,6 +28,9 @@ import { NewsComponent } from './main/news/news.component';
 import { SearchbarComponent } from './main/searchbar/searchbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoaderComponent } from './loader/loader.component';
+import { SummaryGraphComponent } from './main/summary-graph/summary-graph.component';
+import { Truncate } from './main/news/news.pipe';
+import { PastelColorDirective } from './main/summary-graph/pastelcolor.directive';
 
 @NgModule({
   declarations: [
@@ -34,7 +40,10 @@ import { LoaderComponent } from './loader/loader.component';
     GraphComponent,
     NewsComponent,
     SearchbarComponent,
-    LoaderComponent
+    LoaderComponent,
+    SummaryGraphComponent,
+    Truncate,
+    PastelColorDirective
   ],
   imports: [
     BrowserModule,
@@ -52,6 +61,9 @@ import { LoaderComponent } from './loader/loader.component';
     MatIconModule,
     NgxChartsModule,
     HttpClientModule,
+    MatButtonToggleModule,
+    MatTooltipModule,
+    MatDividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

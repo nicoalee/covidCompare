@@ -8,7 +8,7 @@
     flex-direction: row;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1264px) {
     .graph {
         justify-content: center;
     }
@@ -40,4 +40,11 @@
     background-color: white;
     display: flex;
     flex-grow: 1;
+}
+
+.summary-graph-wrapper {
+    border-radius: 10px; 
+    padding: 1%;
+    margin: 1%;
+    background-color: white;
 }

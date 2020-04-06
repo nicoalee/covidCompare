@@ -1,0 +1,62 @@
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .pop-font {
+        font-size: 0.6rem !important;
+    }
+    
+    .name-font {
+        font-size: 0.4rem !important;
+    }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (min-width: 600px) {
+    .pop-font {
+        font-size: 1rem !important;
+    }
+    
+    .name-font {
+        font-size: 0.5rem !important;
+    }
+}
+
+/* Extra small devices (phones, 800px and up) */
+@media only screen and (min-width: 800px) {
+    .pop-font {
+        font-size: 1.3rem !important;
+    }
+    
+    .name-font {
+        font-size: 0.6rem !important;
+    }
+}
+
+/* 1000 and up */
+@media only screen and (min-width: 1000px) {
+    .pop-font {
+        font-size: 1.5rem !important;
+    }
+    
+    .name-font {
+        font-size: 0.8rem !important;
+    }
+}
+
+/* 1400 and up */
+@media only screen and (min-width: 1400px) {
+    .pop-font {
+        font-size: 2rem !important;
+    }
+    
+    .name-font {
+        font-size: 1rem !important;
+    }
+}
+
+.pop-font {
+    font-size: 2rem;
+}
+
+.name-font {
+    font-size: 1rem;
+}

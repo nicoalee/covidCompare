@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { environment } from '../../environments/environment';
-import { Observable, of } from 'rxjs';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { tap, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 import { Papa, ParseResult } from 'ngx-papaparse'
 import { Series } from '../main/dtos';
 

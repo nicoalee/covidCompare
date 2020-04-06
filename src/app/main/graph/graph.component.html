@@ -1,4 +1,18 @@
 <div>
+    <div class="button-toggle-group">
+        <mat-button-toggle-group (change)="onChange($event)" [(ngModel)]="selected" #group="matButtonToggleGroup">
+            <mat-button-toggle value="cases">
+                Cases
+            </mat-button-toggle>
+            <mat-button-toggle value="deaths">
+                Deaths
+            </mat-button-toggle>
+            <mat-button-toggle value="recovered">
+                Recovered
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        <h4 style="text-align: center; margin: 20px 0; font-weight: bold;">Cases (including deaths and recovered)</h4>
+    </div>
     <ngx-charts-area-chart
         *ngIf="multi"
         [view]="view"
